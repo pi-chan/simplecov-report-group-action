@@ -22,7 +22,7 @@ let report = async function () {
     'total',
     json.metrics.covered_percent,
     json.metrics.covered_lines,
-    json.metrics.lines_of_code,
+    json.metrics.total_lines,
   ]
 
   const groupRows = groups.map((group) => {
