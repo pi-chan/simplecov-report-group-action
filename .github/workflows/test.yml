@@ -4,16 +4,16 @@ on:
   push:
 
 jobs:
-  # unit tests
-  units:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - run: npm ci
-    - run: npm test
-      with:
-        resultPath: example.json
-        token: ${{ secrets.GITHUB_TOKEN }}
+  # # unit tests
+  # units:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - run: npm ci
+  #   - run: npm test
+  #     with:
+  #       resultPath: example.json
+  #       token: ${{ secrets.GITHUB_TOKEN }}
 
   # test action works running from the graph
   test:
