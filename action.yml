@@ -1,13 +1,17 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Simplecov Group Coverage Report'
+description: 'Simplecov Group Coverage Report'
+author: pi-chan
+branding:
+  icon: check-square
+  color: green
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  resultPath:
+    description: "coverage json path"
+    default: "coverage/coverage.json"
+    required: false
+  token:
+    description: "Github token"
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
 runs:
   using: 'node12'
   main: 'dist/index.js'
