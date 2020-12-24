@@ -19,10 +19,10 @@ let report = async function () {
   ]
 
   const metrics = [
-    'total',
+    'Total',
     json.metrics.covered_percent,
     json.metrics.covered_lines,
-    json.metrics.lines_of_code,
+    json.metrics.total_lines,
   ]
 
   const groupRows = groups.map((group) => {
@@ -38,7 +38,7 @@ let report = async function () {
 
   const pullRequestId = github.context.issue.number
   if (pullRequestId) {
-    await replaceComment({
+    await replaceComment.default({
       token: core.getInput('token', {required: true}),
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,

@@ -6302,7 +6302,7 @@ const path = __webpack_require__(5622);
 const github = __webpack_require__(5438)
 
 let report = async function () {
-  const resultPath = core.getInput('resultPath') || 'coverage/coverage.json'
+  const resultPath = core.getInput('resultPath') || 'example.json'
   core.debug(`resultPath ${resultPath}`)
 
   const json = require(path.resolve(process.env.GITHUB_WORKSPACE, resultPath))
@@ -6319,7 +6319,7 @@ let report = async function () {
     'total',
     json.metrics.covered_percent,
     json.metrics.covered_lines,
-    json.metrics.lines_of_code,
+    json.metrics.total_lines,
   ]
 
   const groupRows = groups.map((group) => {
@@ -6335,7 +6335,7 @@ let report = async function () {
 
   const pullRequestId = github.context.issue.number
   if (pullRequestId) {
-    await replaceComment({
+    await replaceComment.default({
       token: core.getInput('token', {required: true}),
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
