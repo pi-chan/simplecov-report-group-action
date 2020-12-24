@@ -19,7 +19,7 @@ let report = async function () {
   ]
 
   const metrics = [
-    'total',
+    'Total',
     json.metrics.covered_percent,
     json.metrics.covered_lines,
     json.metrics.total_lines,
