@@ -1,8 +1,9 @@
 const core = require('@actions/core');
 const table = require('markdown-table')
-const replaceComment = require('@aki77/actions-replace-comment')
+// const replaceComment = require('@aki77/actions-replace-comment')
 const path = require('path');
 const github = require('@actions/github')
+import replaceComment from '@aki77/actions-replace-comment'
 
 let report = async function () {
   const resultPath = core.getInput('resultPath') || 'example.json'
