@@ -1,0 +1,29 @@
+{
+  "timestamp": 1608721247,
+  "command_name": "RSpec",
+  "metrics": {
+    "covered_percent": 20.20,
+    "covered_lines": 3000,
+    "total_lines": 10000
+  },
+  "groups": [
+    {
+      "group_name": "Controllers",
+      "covered_percent": 11.65757,
+      "covered_lines": 150,
+      "lines_of_code": 5000
+    },
+    {
+      "group_name": "Models",
+      "covered_percent": 61.65,
+      "covered_lines": 2500,
+      "lines_of_code": 4000
+    },
+    {
+      "group_name": "Ungrouped",
+      "covered_percent": 12.11111,
+      "covered_lines": 8,
+      "lines_of_code": 10
+    }
+  ]
+}

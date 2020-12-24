@@ -5,7 +5,7 @@ const path = require('path');
 const github = require('@actions/github')
 
 let report = async function () {
-  const resultPath = core.getInput('resultPath') || 'coverage/coverage.json'
+  const resultPath = core.getInput('resultPath') || 'example.json'
   core.debug(`resultPath ${resultPath}`)
 
   const json = require(path.resolve(process.env.GITHUB_WORKSPACE, resultPath))
