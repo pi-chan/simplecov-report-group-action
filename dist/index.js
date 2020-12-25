@@ -5,19 +5,23 @@ require('./sourcemap-register.js');module.exports =
 /***/ 2932:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-const core = __webpack_require__(2186);
-const report = __webpack_require__(1437);
+const core = __webpack_require__(2186)
+const report = __webpack_require__(1437)
 
 // most @actions toolkit packages have async methods
-async function run() {
+async function run () {
   try {
-    report()
+    const resultPath = core.getInput('resultPath')
+    core.debug(`resultPath ${resultPath}`)
+
+    const json = require(path.resolve(process.env.GITHUB_WORKSPACE, resultPath))
+    report(json)
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error.message)
   }
 }
 
-run();
+run()
 
 
 /***/ }),
@@ -6295,18 +6299,14 @@ function wrappy (fn, cb) {
 /***/ 1437:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const core = __webpack_require__(2186);
+const core = __webpack_require__(2186)
 const table = __webpack_require__(1062)
 const replaceComment = __webpack_require__(94)
-const path = __webpack_require__(5622);
+const path = __webpack_require__(5622)
 const github = __webpack_require__(5438)
 
-let report = async function () {
-  const resultPath = core.getInput('resultPath') || 'example.json'
-  core.debug(`resultPath ${resultPath}`)
-
-  const json = require(path.resolve(process.env.GITHUB_WORKSPACE, resultPath))
-  const groups = json.groups
+const report = async function (json) {
+  const groups = json.groups || []
 
   const header = [
     'group name',
@@ -6316,10 +6316,10 @@ let report = async function () {
   ]
 
   const metrics = [
-    'total',
-    json.metrics.covered_percent,
+    'Total',
+    json.metrics.covered_percent.toFixed(3),
     json.metrics.covered_lines,
-    json.metrics.total_lines,
+    json.metrics.total_lines
   ]
 
   const groupRows = groups.map((group) => {
@@ -6327,7 +6327,7 @@ let report = async function () {
       group.group_name,
       group.covered_percent.toFixed(3),
       group.covered_lines,
-      group.lines_of_code,
+      group.lines_of_code
     ]
   })
 
@@ -6336,7 +6336,7 @@ let report = async function () {
   const pullRequestId = github.context.issue.number
   if (pullRequestId) {
     await replaceComment.default({
-      token: core.getInput('token', {required: true}),
+      token: core.getInput('token', { required: true }),
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
       issue_number: pullRequestId,
@@ -6347,9 +6347,9 @@ ${tableText}
   }
 
   return true
-};
+}
 
-module.exports = report;
+module.exports = report
 
 
 /***/ }),

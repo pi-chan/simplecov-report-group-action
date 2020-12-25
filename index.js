@@ -4,7 +4,11 @@ const report = require('./report')
 // most @actions toolkit packages have async methods
 async function run () {
   try {
-    report()
+    const resultPath = core.getInput('resultPath')
+    core.debug(`resultPath ${resultPath}`)
+
+    const json = require(path.resolve(process.env.GITHUB_WORKSPACE, resultPath))
+    report(json)
   } catch (error) {
     core.setFailed(error.message)
   }

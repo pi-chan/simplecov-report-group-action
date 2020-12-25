@@ -4,11 +4,7 @@ const replaceComment = require('@aki77/actions-replace-comment')
 const path = require('path')
 const github = require('@actions/github')
 
-const report = async function () {
-  const resultPath = core.getInput('resultPath') || 'example.json'
-  core.debug(`resultPath ${resultPath}`)
-
-  const json = require(path.resolve(process.env.GITHUB_WORKSPACE, resultPath))
+const report = async function (json) {
   const groups = json.groups || []
 
   const header = [
@@ -20,7 +16,7 @@ const report = async function () {
 
   const metrics = [
     'Total',
-    json.metrics.covered_percent,
+    json.metrics.covered_percent.toFixed(3),
     json.metrics.covered_lines,
     json.metrics.total_lines
   ]
