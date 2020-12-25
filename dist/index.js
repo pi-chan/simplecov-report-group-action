@@ -6,6 +6,7 @@ require('./sourcemap-register.js');module.exports =
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 const core = __webpack_require__(2186)
+const path = __webpack_require__(5622)
 const report = __webpack_require__(1437)
 
 // most @actions toolkit packages have async methods
