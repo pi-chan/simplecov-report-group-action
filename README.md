@@ -15,7 +15,9 @@ The action works only with `pull_request` event.
 ### Inputs
 
 - `token` - The GITHUB_TOKEN secret.
-- `resultPath` - Path to last_run json file. (default: `coverage/coverage.json`)
+- `result-path` - Path to last_run json file. (default: `coverage/coverage.json`)
+- `working-directory` - Directory path for searching the result-path (default: ``)
+- `comment-subject` - Subject line for the MR Comment (default: `SimpleCov Coverage Report`)
 
 ## Example
 
@@ -31,7 +33,7 @@ jobs:
         run: bundle exec rspec
 
       - name: Simplecov Report
-        uses: pi-chan/simplecov-report-group-action@v1
+        uses: shettytejas/simplecov-report-group-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
