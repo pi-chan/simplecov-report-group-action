@@ -1,17 +1,25 @@
-name: 'Simplecov Group Coverage Report'
+name: 'SimpleCov Group Coverage Report'
 description: 'Simplecov Group Coverage Report'
-author: pi-chan
+author: Tejas Shetty
 branding:
   icon: check-square
   color: green
 inputs:
-  resultPath:
-    description: "coverage json path"
+  comment-subject:
+    description: "Subject line for Comment"
+    default: "SimpleCov Coverage Report"
+    required: false
+  working-directory:
+    description: "Working Directory for the searhing resultPath in"
+    default: "."
+    required: false
+  result-path:
+    description: "Coverage JSON Path"
     default: "coverage/coverage.json"
     required: false
   token:
     description: "Github token"
     required: true
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
