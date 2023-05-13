@@ -33,7 +33,7 @@ jobs:
         run: bundle exec rspec
 
       - name: Simplecov Report
-        uses: shettytejas/simplecov-report-group-action@v1
+        uses: pi-chan/simplecov-report-group-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```

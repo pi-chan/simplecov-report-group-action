@@ -66,7 +66,7 @@ const main = async (filePath) => {
   return true
 }
 
-module.exports = main
+module.exports = main // For exposing method in test cases.
 
 main(`${core.getInput('working-directory')}/${core.getInput('result-path')}`)
 
